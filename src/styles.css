@@ -4,3 +4,135 @@
 @media(max-width:600px){.page-pad{padding-left:20px;padding-right:20px}.site-header{height:68px;padding:0 20px}.mobile-nav{top:68px}.header-icons>button:first-child,.header-icons>a:nth-child(2){display:none}.hero{display:flex;flex-direction:column;padding:110px 20px 30px}.hero-copy{order:1}.hero h1{font-size:64px;margin:25px 0}.hero-work{order:0;height:56vh;min-height:440px;width:100%;margin-bottom:45px}.scroll-note{display:none}.button-row{gap:20px;align-items:flex-start;flex-direction:column}.intro{grid-template-columns:1fr;padding-top:100px;padding-bottom:100px}.intro p{font-size:41px}.title-block{grid-template-columns:1fr;gap:15px}.title-block h2{font-size:53px}.title-block p{grid-column:1}.featured-list{display:block}.feature{margin:0 0 80px!important;width:100%}.feature .art-mat{height:auto}.feature-3{width:100%}.art-info{gap:15px}.art-info h3{font-size:25px}.statement{padding:100px 25px;min-height:auto}.statement blockquote{font-size:39px}.collection-grid{display:block}.collection{height:75vw!important;margin:0 0 14px!important}.collection.c5{margin:0!important}.trust{grid-template-columns:1fr 1fr;padding:55px 20px}.trust>div{border:0}.journal-preview>div:last-child{grid-template-columns:1fr;gap:60px}.journal-preview .art-mat{height:auto}.newsletter{grid-template-columns:1fr;padding:85px 25px}.newsletter h2{font-size:58px}footer{grid-template-columns:1fr 1fr;padding:70px 25px 30px}footer .footer-brand{grid-column:1/-1}footer small{grid-column:1/-1}.subpage{padding-top:120px}.page-hero h1{font-size:85px}.filterbar{align-items:start;gap:15px}.view-buttons{display:none}.art-grid.grid{columns:1}.art-grid.grid article:nth-child(3n+2){padding-top:0}.art-grid article{margin-bottom:65px}.artwork-main{padding-top:105px}.museum-view{min-height:58vh;padding:15px}.museum-view .art-mat{height:55vh}.acquire-panel h1{font-size:62px}.split-buttons{grid-template-columns:1fr}.art-story{grid-template-columns:1fr;padding-top:90px;padding-bottom:90px}.art-story h2,.art-story>div{grid-column:1}.art-story>div{grid-template-columns:1fr}.detail-strip{grid-template-columns:1fr}.detail-strip button{border-bottom:1px solid var(--line);border-right:0}.similar-grid{grid-template-columns:1fr}.similar-grid .art-mat{height:auto}.sticky-acquire{display:block;position:fixed;z-index:19;bottom:12px;left:20px;right:20px;background:var(--ink);color:white;border:0;padding:15px;text-transform:uppercase;font-size:9px;letter-spacing:.1em}.collection-page>a,.collection-page>a:nth-child(even){display:flex;flex-direction:column;align-items:stretch}.collection-page>a:nth-child(even) .art-mat{order:0}.collection-page .art-mat{height:auto}.about-hero{grid-template-columns:1fr;padding-top:120px;padding-bottom:70px}.about-hero h1{font-size:67px}.portrait{height:60vh}.about-intro{grid-template-columns:1fr}.about-intro h2,.about-intro>div{grid-column:1}.about-intro>div{grid-template-columns:1fr}.philosophy{grid-template-columns:1fr}.texture{height:65vh}.philosophy>div:last-child{padding:80px 25px}.bio-grid{grid-template-columns:1fr}.bio-grid>div{padding:35px 20px}.journal-page article{display:flex;flex-direction:column}.journal-page article:nth-child(even) .art-mat{order:0}.journal-page .art-mat{height:auto}.contact-page{padding-top:120px}.field-row{grid-template-columns:1fr}.cart-layout{grid-template-columns:1fr}.cart-layout>div>article{grid-template-columns:100px 1fr auto}.cart-layout .art-mat{height:120px}.cart-layout aside{position:relative;top:0}}
 .p5{background-image:url("/art/her.jpg")}
 .texture{background-image:url("/art/cycles-awakening.jpg")}
+
+/* Mobile gallery refinement — desktop styles remain unchanged */
+@media(max-width:600px){
+  body{overflow-x:hidden}
+  .art-mat{min-width:0;max-width:100%;overflow:hidden}
+  .art-mat img{width:auto;height:auto;max-width:100%;max-height:100%;object-fit:contain;flex:0 1 auto}
+  .page-pad{padding-left:24px;padding-right:24px}
+  .site-header{height:72px;padding:0 18px;background:#f5f1e8f2;backdrop-filter:blur(14px);border-bottom:1px solid rgba(23,23,23,.1)}
+  .brand{font-size:12px;line-height:1.05}.brand span{font-size:7px;margin-top:4px}
+  .header-icons{gap:15px}.header-icons svg{width:19px;height:19px}.header-icons i{right:-7px;top:-7px}
+  .mobile-menu{width:38px;height:38px;display:grid!important;place-items:center}
+  .mobile-nav{top:72px;height:calc(100dvh - 72px);padding:48px 24px;background:var(--ivory);gap:0}
+  .mobile-nav a{font:400 43px/1.25 var(--serif);padding:9px 0;border-bottom:1px solid var(--line)}
+
+  .hero{min-height:auto;padding:96px 0 0}
+  .hero-work{order:0;width:calc(100% - 32px);max-width:calc(100vw - 32px);min-width:0;height:61vh;min-height:470px;margin:0 16px 0;overflow:hidden}
+  .hero-work .art-mat{position:relative;width:100%;min-width:0;padding:0;background:#e9e3d8}
+  .hero-work .art-mat img{position:absolute;inset:14px;animation:none;width:calc(100% - 28px);height:calc(100% - 28px);max-width:none;max-height:none;min-width:0;object-fit:contain}
+  .caption{padding:10px 3px 0;line-height:1.5;gap:15px}
+  .caption span:last-child{text-align:right}
+  .hero-copy{order:1;width:100%;min-width:0;padding:54px 24px 68px;overflow:hidden}
+  .hero h1{max-width:100%;font-size:clamp(54px,16.5vw,70px);line-height:.86;margin:22px 0 30px;letter-spacing:-.055em;overflow-wrap:normal}
+  .hero-copy>p{font-size:14px;line-height:1.75;margin:0;max-width:34ch}
+  .button-row{margin-top:32px;gap:22px;align-items:stretch}
+  .button-row .button{width:100%;min-height:52px;justify-content:space-between;padding:15px 18px}
+  .button-row .text-link{align-self:flex-start;font-size:10px;padding:7px 0}
+
+  .intro{padding-top:90px;padding-bottom:100px;gap:28px}
+  .intro p{font-size:clamp(38px,11.5vw,49px);line-height:1.02}
+  .kicker,.title-block>span,.about-intro>span{font-size:9px;line-height:1.5}
+  .title-block{margin-bottom:45px}
+  .title-block h2{font-size:clamp(47px,14vw,61px);line-height:.9}
+  .title-block p{font-size:12px;line-height:1.7}
+
+  .featured{padding-bottom:70px}
+  .feature{margin-bottom:72px!important}
+  .feature .image-button{display:block}
+  .feature .art-mat{padding:12px;background:#e8e2d7}
+  .art-info{padding-top:18px;align-items:flex-start}
+  .art-info h3{font-size:28px;line-height:1.05;margin-top:7px}
+  .art-info p{font-size:10px;line-height:1.65}
+  .art-price button{min-height:40px;white-space:nowrap}
+
+  .statement{padding:88px 24px}
+  .statement-mark{font-size:76px;height:52px}
+  .statement blockquote{font-size:clamp(34px,10vw,44px);line-height:1.04}
+  .signature{font-size:29px}
+
+  .collections{padding-top:90px;padding-bottom:90px}
+  .collection{height:105vw!important;max-height:540px!important;margin-bottom:20px!important;background:#e8e2d7}
+  .collection img{object-fit:contain}
+  .collection>div{padding:22px;background:linear-gradient(transparent 48%,rgba(0,0,0,.68))}
+  .collection h3{font-size:38px;line-height:.95}
+  .collection b{opacity:1;transform:none}
+
+  .process{padding-top:90px;padding-bottom:80px}
+  .process-track{margin-right:-24px;grid-template-columns:repeat(5,78vw);gap:14px;scroll-snap-type:x mandatory}
+  .process-track>div{scroll-snap-align:start}
+  .process-visual{height:92vw;max-height:420px}
+
+  .trust{grid-template-columns:1fr 1fr;gap:0;padding:18px}
+  .trust>div{min-height:145px;padding:22px 8px;display:flex;flex-direction:column;justify-content:center;border-right:1px solid #383735;border-bottom:1px solid #383735}
+  .trust>div:nth-child(even){border-right:0}.trust>div:nth-last-child(-n+2){border-bottom:0}
+  .trust p{font-size:18px;margin:8px 0}.trust svg{margin:8px auto}
+
+  .journal-preview{padding-top:90px;padding-bottom:90px}
+  .journal-preview>div:last-child{gap:64px}
+  .journal-preview article .art-mat{padding:11px}
+  .journal-preview h3{font-size:31px;line-height:1.05}
+  .journal-preview p{font-size:11px;line-height:1.7}
+
+  .newsletter{padding:82px 24px;gap:45px}
+  .newsletter h2{font-size:56px;line-height:.9}
+  .newsletter form>p{font-size:12px}
+  .newsletter input{font-size:14px;min-height:52px}
+  footer{display:grid;grid-template-columns:1fr;padding:65px 24px 30px;gap:38px}
+  footer .footer-brand,footer small{grid-column:1}
+  footer p{font-size:21px}footer>div:not(:first-child){font-size:11px;gap:13px}
+
+  .subpage{padding-top:116px;padding-bottom:90px}
+  .page-hero{margin-bottom:65px}
+  .page-hero h1{font-size:clamp(70px,23vw,98px);line-height:.8;margin-top:20px}
+  .page-hero p{font-size:12px;line-height:1.75}
+  .filterbar{position:relative;margin-left:-24px;margin-right:-24px;padding:14px 24px;overflow-x:auto;flex-wrap:nowrap}
+  .filterbar>div:first-child{flex-wrap:nowrap}.filterbar button{white-space:nowrap;min-height:38px}
+  .art-grid article{margin-bottom:62px}
+  .art-grid article .art-mat{padding:10px}
+  .art-grid article h3{font-size:31px}
+  .art-grid article p{font-size:10px;padding-right:85px}
+
+  .artwork-main{padding-top:94px;padding-left:0;padding-right:0;gap:0}
+  .museum-view{min-height:auto;padding:18px 14px 22px;background:#e9e3d8}
+  .museum-view .art-mat{height:65dvh;min-height:470px}
+  .museum-view>button{right:22px;bottom:30px;min-height:40px}
+  .acquire-panel{padding:50px 24px 95px}
+  .acquire-panel h1{font-size:64px;line-height:.85;margin:24px 0 28px}
+  .medium,.description{font-size:12px}.acquire-panel dl>div{font-size:9px;gap:20px}
+  .acquire-panel dd{text-align:right}
+  .acquire-panel .button{min-height:50px}
+  .art-story{padding:85px 24px}.art-story h2{font-size:48px;line-height:.95}
+  .art-story p{font-size:12px}
+  .detail-strip{padding:20px 24px 70px}.detail-strip button{min-height:60px;padding:16px 5px;font-size:21px}
+  .similar{padding-top:75px;padding-bottom:100px}.similar-grid{gap:55px}
+  .sticky-acquire{left:12px;right:12px;bottom:10px;min-height:54px;box-shadow:0 8px 30px rgba(0,0,0,.25)}
+
+  .collection-page{gap:85px}.collection-page .art-mat{padding:12px}
+  .collection-page h2{font-size:49px}.collection-page p{font-size:12px}
+
+  .about-hero{padding-top:112px;padding-bottom:80px;gap:48px}
+  .about-hero h1{font-size:63px;line-height:.84;margin:24px 0}
+  .portrait{height:72dvh;min-height:500px}
+  .about-intro{padding-top:90px;padding-bottom:90px;gap:30px}
+  .about-intro h2{font-size:40px;line-height:1.02}
+  .about-intro>div{gap:10px}.about-intro p{font-size:12px}
+  .philosophy .texture{height:70dvh;min-height:500px;background-size:contain}
+  .philosophy>div:last-child{padding:75px 24px}.philosophy h2{font-size:50px}
+  .bio-grid{padding-top:70px;padding-bottom:70px}.bio-grid>div{padding:38px 24px}.bio-grid h3{font-size:37px}.bio-grid p{font-size:12px}
+
+  .journal-page{gap:75px}.journal-page article{gap:24px}.journal-page .art-mat{padding:11px}
+  .journal-page h2{font-size:38px;line-height:1}.journal-page p{font-size:12px;line-height:1.7}
+
+  .contact-page{padding-top:116px;padding-bottom:90px;gap:50px}
+  .contact-intro h1{font-size:66px;line-height:.83;margin:25px 0}
+  .contact-intro>p{font-size:13px}.contact-intro>div{font-size:10px;overflow-wrap:anywhere}
+  .contact-page form{padding-top:10px}.contact-page label{font-size:9px;margin-bottom:28px}
+  .contact-page input,.contact-page select,.contact-page textarea{font-size:16px;min-height:50px}
+  .contact-page textarea{min-height:150px}.contact-page form>.button{width:100%;min-height:52px;justify-content:space-between}
+
+  .cart-layout{gap:45px}.cart-layout>div>article{grid-template-columns:92px 1fr 28px;gap:16px}
+  .cart-layout .art-mat{height:120px;padding:5px}.cart-layout h2{font-size:25px}
+  .cart-layout aside{padding:26px 20px}.cart-layout aside .button{min-height:52px}
+}
