@@ -9,10 +9,7 @@ import "./styles.css";
 const artworks = [
   { id:"her", title:"Her", year:"2025", medium:"Oil, acrylic, graphite & bronze leaf on linen", size:"92 × 115 cm", availability:"Available", image:"/art/her.jpg", orientation:"Portrait", theme:"Inner Awareness", description:"A meditation on quiet resilience and the concealed territories of the self. Architectural lines hold a figure between an inherited city and a living, botanical consciousness." },
   { id:"city-lights", title:"City Lights Through the Rain", year:"2025", medium:"Oil, acrylic & graphite on canvas", size:"140 × 94 cm", availability:"Available", image:"/art/city-lights.jpg", orientation:"Square", theme:"Urban Reflections", description:"Colombo after the monsoon becomes a field of reflection—built form dissolving into water, light and remembered movement." },
-  { id:"cycles", title:"Cycles of Awakening", year:"2024", medium:"Acrylic, mineral pigment & gold leaf on raw linen", size:"110 × 110 cm", availability:"Reserved", image:"/art/cycles-awakening.jpg", orientation:"Portrait", theme:"Cycles of Transformation", description:"Lotus, seed, orbit and rainwater converge as a symbolic map of consciousness in continual transformation." },
-  { id:"threshold", title:"Threshold of Stillness", year:"2024", medium:"Mixed media on linen", size:"78 × 98 cm", availability:"Sold", image:"/art/her.jpg", orientation:"Portrait", theme:"Inner Awareness", description:"A study of the fragile boundary between observation and feeling." },
-  { id:"monsoon", title:"Monsoon Geometry", year:"2025", medium:"Oil & graphite on canvas", size:"120 × 80 cm", availability:"Available", image:"/art/city-lights.jpg", orientation:"Square", theme:"Urban Reflections", description:"Rain measures the city in fleeting verticals and illuminated intervals." },
-  { id:"return", title:"The Eternal Return", year:"2024", medium:"Mineral pigment on linen", size:"90 × 90 cm", availability:"Available", image:"/art/cycles-awakening.jpg", orientation:"Portrait", theme:"Nature and Consciousness", description:"A quiet cosmology of growth, dissolution and return." }
+  { id:"cycles", title:"Cycles of Awakening", year:"2024", medium:"Acrylic, mineral pigment & gold leaf on raw linen", size:"110 × 110 cm", availability:"Reserved", image:"/art/cycles-awakening.jpg", orientation:"Portrait", theme:"Cycles of Transformation", description:"Lotus, seed, orbit and rainwater converge as a symbolic map of consciousness in continual transformation." }
 ];
 
 const nav = ["Home","Artworks","Collections","About","Journal","Contact"];
@@ -48,6 +45,7 @@ const ArtImage = ({ art, className="" }) => <div className={`art-mat ${className
 const TitleBlock = ({ index, eyebrow, title, text }) => <div className="title-block"><span>{index} — {eyebrow}</span><h2>{title}</h2>{text&&<p>{text}</p>}</div>;
 
 function Home({ openArt }) {
+  const [discovered,setDiscovered]=useState(false);
   return <>
     <section className="hero">
       <div className="hero-copy fade"><span className="kicker">Contemporary artist · Sri Lanka</span><h1>Art Beyond<br/>the <em>Visible</em></h1>
@@ -61,22 +59,22 @@ function Home({ openArt }) {
     <section className="intro page-pad"><span className="kicker">Selected works · 2024–2025</span><p>Where emotion meets structure, and the visible world opens into something <em>felt.</em></p></section>
 
     <section className="featured page-pad">
-      <TitleBlock index="01" eyebrow="Featured artworks" title="Three meditations"/>
+      <TitleBlock index="01" eyebrow="Featured artworks" title="Further meditations"/>
       <div className="featured-list">
-        {artworks.slice(0,3).map((art,i)=><article className={`feature feature-${i+1}`} key={art.id}>
+        {artworks.slice(1).map((art,i)=><article className={`feature feature-${i+1}`} key={art.id}>
           <button className="image-button" onClick={()=>openArt(art.id)}><ArtImage art={art}/></button>
           <div className="art-info"><div><span className="status">{art.availability}</span><h3>{art.title}</h3><p>{art.year} · {art.medium}<br/>{art.size}</p></div><div className="art-price"><button onClick={()=>openArt(art.id)}>View artwork <ArrowRight/></button></div></div>
         </article>)}
       </div>
     </section>
 
-    <section className="statement"><div className="statement-mark">“</div><blockquote>I paint the space between what we see and what we feel. Through colour, structure and symbolism, each work explores awareness, memory, emotion and transformation.</blockquote><div className="signature">Piyumini</div><span>Artist statement · Colombo</span></section>
+    <section className="statement"><div className="statement-mark">“</div><blockquote>I paint the space between what we see and what we feel. Through colour, structure and symbolism, each work explores awareness, memory, emotion and transformation.</blockquote><button className="signature secret-trigger" onClick={()=>setDiscovered(true)} aria-label="Look beneath the signature">Piyumini<span></span></button><small>Some marks are doors.</small><span>Artist statement · Sri Lanka</span></section>
 
     <section className="collections page-pad">
       <TitleBlock index="02" eyebrow="Explore" title="Collections" text="Bodies of work tracing the recurring ideas and environments within the practice."/>
       <div className="collection-grid">
-        {[["Inner Awareness",artworks[0]],["Urban Reflections",artworks[1]],["Cycles of Transformation",artworks[2]],["Nature & Consciousness",artworks[2]],["Available Originals",artworks[1]]].map(([name,art],i)=>
-          <a href="#/artworks" className={`collection c${i+1}`} key={name}><img src={art.image} alt=""/><div><span>0{i+1}</span><h3>{name}</h3><b>View collection →</b></div></a>)}
+        {["Inner Awareness","Urban Reflections","Cycles of Transformation","Nature & Consciousness","Available Originals"].map((name,i)=>
+          <a href="#/collections" className={`collection c${i+1} symbolic-collection`} key={name}><div className="collection-symbol" aria-hidden="true"><i></i><i></i><i></i></div><div><span>0{i+1}</span><h3>{name}</h3><b>View collection →</b></div></a>)}
       </div>
     </section>
 
@@ -88,6 +86,7 @@ function Home({ openArt }) {
     <Trust/>
     <JournalPreview/>
     <Newsletter/>
+    {discovered&&<div className="discovery" role="dialog" aria-modal="true" aria-label="A hidden layer"><button onClick={()=>setDiscovered(false)} aria-label="Close"><X/></button><div className="discovery-orbit"><i></i><i></i><i></i></div><span>You looked twice.</span><h2>The visible<br/>is only the<br/><em>first layer.</em></h2><p>Meaning does not always announce itself.<br/>Sometimes, it waits for attention.</p><small>7.8731° N · 80.7718° E</small></div>}
   </>;
 }
 
@@ -120,7 +119,7 @@ function ArtworkPage({ art, addCart, toggleWish, wished }) {
   </main>;
 }
 
-function Collections(){return <main className="subpage page-pad"><div className="page-hero"><span className="kicker">Bodies of work</span><h1>Collections</h1><p>Recurring worlds—each a sustained meditation across image, material and time.</p></div><div className="collection-page">{[["Inner Awareness","Figures and interior landscapes that ask what remains when the visible falls away.",artworks[0]],["Urban Reflections","Colombo, memory and the emotional architecture of a changing city.",artworks[1]],["Cycles of Transformation","Nature, time and the repeating geometries of becoming.",artworks[2]],["Nature & Consciousness","Botanical forms as vessels for attention and inner movement.",artworks[2]]].map(([n,d,a],i)=><a href="#/artworks" key={n}><ArtImage art={a}/><div><span>0{i+1}</span><h2>{n}</h2><p>{d}</p><b>Explore collection →</b></div></a>)}</div></main>}
+function Collections(){return <main className="subpage page-pad"><div className="page-hero"><span className="kicker">Bodies of work</span><h1>Collections</h1><p>Recurring worlds—each a sustained meditation across image, material and time.</p></div><div className="collection-page">{[["Inner Awareness","Figures and interior landscapes that ask what remains when the visible falls away.",artworks[0]],["Urban Reflections","Colombo, memory and the emotional architecture of a changing city.",artworks[1]],["Cycles of Transformation","Nature, time and the repeating geometries of becoming.",artworks[2]],["Nature & Consciousness","Botanical forms as vessels for attention and inner movement.",null]].map(([n,d,a],i)=><a href="#/artworks" key={n}>{a?<ArtImage art={a}/>:<div className="collection-placeholder"><i></i><span>What grows<br/>cannot be hurried.</span></div>}<div><span>0{i+1}</span><h2>{n}</h2><p>{d}</p><b>Explore collection →</b></div></a>)}</div></main>}
 
 function About(){
   return <main className="about-page"><section className="about-hero page-pad"><div><span className="kicker">Artist · Civil & environmental engineering student · Observer</span><h1>Structure meets <em>intuition.</em></h1></div><div className="portrait"><div className="portrait-shape"></div><span>In the studio, Sri Lanka · 2025</span></div></section>
@@ -132,8 +131,8 @@ function About(){
 }
 
 const posts=[["The painting beneath the painting","On revision, erasure and allowing a work to keep its history.","Essay · 8 min",artworks[0]],["After the monsoon","Walking Colombo and gathering the colours of reflected light.","Studio journal · 5 min",artworks[1]],["Why circles return","Notes on cycles, consciousness and symbolic form.","Process · 6 min",artworks[2]]];
-function JournalPreview(){return <section className="journal-preview page-pad"><TitleBlock index="04" eyebrow="From the journal" title="Notes from the studio"/><div>{posts.map(([t,d,m,a])=><article key={t}><ArtImage art={a}/><span>{m}</span><h3>{t}</h3><p>{d}</p><a href="#/journal">Read story <ArrowRight/></a></article>)}</div></section>}
-function Journal(){return <main className="subpage page-pad"><div className="page-hero"><span className="kicker">Writing · Process · Reflection</span><h1>Journal</h1><p>Stories behind the work, notes from the studio and reflections on art, consciousness and place.</p></div><div className="journal-page">{[...posts,...posts].map(([t,d,m,a],i)=><article key={i}><ArtImage art={a}/><div><span>{m}</span><h2>{t}</h2><p>{d}</p><a href="#">Read story →</a></div></article>)}</div></main>}
+function JournalPreview(){return <section className="journal-preview page-pad"><TitleBlock index="04" eyebrow="From the journal" title="Notes from the studio"/><div>{posts.map(([t,d,m],i)=><article key={t}><div className={`journal-cover j${i+1}`}><span>0{i+1}</span><i></i></div><span>{m}</span><h3>{t}</h3><p>{d}</p><a href="#/journal">Read story <ArrowRight/></a></article>)}</div></section>}
+function Journal(){return <main className="subpage page-pad"><div className="page-hero"><span className="kicker">Writing · Process · Reflection</span><h1>Journal</h1><p>Stories behind the work, notes from the studio and reflections on art, consciousness and place.</p></div><div className="journal-page">{posts.map(([t,d,m,a],i)=><article key={t}><ArtImage art={a}/><div><span>{m}</span><h2>{t}</h2><p>{d}</p><a href="#">Read story →</a></div></article>)}</div></main>}
 
 const gmailComposeUrl=(subject,body)=>`https://mail.google.com/mail/?view=cm&fs=1&to=piyuminiabeysundara@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
